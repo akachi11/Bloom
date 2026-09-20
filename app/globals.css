@@ -1,6 +1,55 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --color-dark-1: #1C1F2E;
+    --color-dark-2: #161925;
+    --color-dark-3: #252A41;
+    --color-dark-4: #1E2757;
+
+    --color-blue-1: #0E78F9;
+
+    --color-sky-1: #C9DDFF;
+    --color-sky-2: #ECF0FF;
+    --color-sky-3: #F5FCFF;
+
+    --color-orange-1: #FF742E;
+    --color-purple-1: #830EF9;
+    --color-yellow-1: #F9A90E;
+
+    --animate-accordion-down: accordion-down 0.2s ease-out;
+    --animate-accordion-up: accordion-up 0.2s ease-out;
+
+    --background-image-hero: url('/images/hero-background.png');
+
+    @keyframes accordion-down {
+        from { height: 0; }
+        to { height: var(--radix-accordion-content-height); }
+    }
+    @keyframes accordion-up {
+        from { height: var(--radix-accordion-content-height); }
+        to { height: 0; }
+    }
+}
+
+@utility container {
+    margin-inline: auto;
+    padding-inline: 2rem;
+    max-width: 100%;
+    @media (width >= 1400px) {
+        max-width: 1400px;
+    }
+}
+
+@utility flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
 @custom-variant dark (&:is(.dark *));
 
