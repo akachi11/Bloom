@@ -34,7 +34,7 @@ const MeetingTypeList = () => {
         if (!client || !user) return;
         try {
             if (!values.dateTime) {
-                toast({ title: 'Please select a date and time' });
+                toast('Please select a date and time');
                 return;
             }
             const id = crypto.randomUUID();
@@ -55,16 +55,14 @@ const MeetingTypeList = () => {
             if (!values.description) {
                 router.push(`/meeting/${call.id}`);
             }
-            toast({
-                title: 'Meeting Created',
-            });
+            toast('Meeting Created');
         } catch (error) {
             console.error(error);
-            toast({ title: 'Failed to create Meeting' });
+            toast('Failed to create Meeting');
         }
     };
 
-    if (!client || !user) return <Loader />;
+    // if (!client || !user) return <Loader />;
 
     const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetail?.id}`;
 
@@ -122,7 +120,7 @@ const MeetingTypeList = () => {
                         </label>
                         <ReactDatePicker
                             selected={values.dateTime}
-                            onChange={(date) => setValues({ ...values, dateTime: date! })}
+                            onChange={(date: Date | null) => setValues({ ...values, dateTime: date! })}
                             showTimeSelect
                             timeFormat="HH:mm"
                             timeIntervals={15}
@@ -139,7 +137,7 @@ const MeetingTypeList = () => {
                     title="Meeting Created"
                     handleClick={() => {
                         navigator.clipboard.writeText(meetingLink);
-                        toast({ title: 'Link Copied' });
+                        toast('Link Copied');
                     }}
                     image={'/icons/checked.svg'}
                     buttonIcon="/icons/copy.svg"
