@@ -31,6 +31,8 @@ const MeetingTypeList = () => {
     const { user } = useUser();
 
     const createMeeting = async () => {
+        console.log(client)
+        console.log(user)
         if (!client || !user) return;
         try {
             if (!values.dateTime) {
