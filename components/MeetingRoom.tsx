@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
     CallControls,
     CallParticipantsList,
@@ -34,12 +34,6 @@ const MeetingRoom = () => {
     const { useCallCallingState } = useCallStateHooks();
 
     const callingState = useCallCallingState();
-
-    useEffect(() => {
-        if (callingState === CallingState.LEFT) {
-            router.push('/');
-        }
-    }, [callingState, router]);
 
     if (callingState !== CallingState.JOINED) return <Loader />;
 

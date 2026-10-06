@@ -32,7 +32,7 @@ export default function StreamVideoProvider({ children }: { children: ReactNode 
             client.disconnectUser();
             setVideoClient(undefined);
         };
-    }, [user, isLoaded]);
+    }, [user?.id, isLoaded]);
 
     if (!isLoaded) return <Loader />;
     if (!user) return <>{children}</>;
