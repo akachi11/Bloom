@@ -24,7 +24,7 @@
     --animate-accordion-down: accordion-down 0.2s ease-out;
     --animate-accordion-up: accordion-up 0.2s ease-out;
 
-    --background-image-hero: url('/images/hero-background.png');
+    --background-image-hero: linear-gradient(135deg, #0E78F9 0%, #830EF9 100%);
 
     @keyframes accordion-down {
         from { height: 0; }
@@ -49,6 +49,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+@utility flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@utility glassmorphism {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
 @custom-variant dark (&:is(.dark *));

@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     CallControls,
     CallParticipantsList,
@@ -33,8 +33,13 @@ const MeetingRoom = () => {
     const [showParticipants, setShowParticipants] = useState(false);
     const { useCallCallingState } = useCallStateHooks();
 
-    // for more detail about types of CallingState see: https://getstream.io/video/docs/react/ui-cookbook/ringing-call/#incoming-call-panel
     const callingState = useCallCallingState();
+
+    useEffect(() => {
+        if (callingState === CallingState.LEFT) {
+            router.push('/');
+        }
+    }, [callingState, router]);
 
     if (callingState !== CallingState.JOINED) return <Loader />;
 

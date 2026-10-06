@@ -16,7 +16,7 @@ export default function StreamVideoProvider({ children }: { children: ReactNode 
         if (!isLoaded || !user) return;
         if (!apiKey) throw new Error('Stream API key is missing');
 
-        const client = new StreamVideoClient({
+        const client = StreamVideoClient.getOrCreateInstance({
             apiKey,
             user: {
                 id: user.id,
@@ -26,7 +26,6 @@ export default function StreamVideoProvider({ children }: { children: ReactNode 
             tokenProvider,
         });
 
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         setVideoClient(client);
 
         return () => {
@@ -35,7 +34,9 @@ export default function StreamVideoProvider({ children }: { children: ReactNode 
         };
     }, [user, isLoaded]);
 
-    // if (!videoClient) return <Loader />;
+    if (!isLoaded) return <Loader />;
+    if (!user) return <>{children}</>;
+    if (!videoClient) return <Loader />;
 
     return <StreamVideo client={videoClient}>{children}</StreamVideo>;
 }

@@ -31,8 +31,6 @@ const MeetingTypeList = () => {
     const { user } = useUser();
 
     const createMeeting = async () => {
-        console.log(client)
-        console.log(user)
         if (!client || !user) return;
         try {
             if (!values.dateTime) {
@@ -91,11 +89,11 @@ const MeetingTypeList = () => {
                 handleClick={() => setMeetingState('isScheduleMeeting')}
             />
             <HomeCard
-                img="/icons/recordings.svg"
-                title="View Recordings"
-                description="Meeting Recordings"
+                img="/icons/upcoming.svg"
+                title="Upcoming Meetings"
+                description="View upcoming meetings"
                 className="bg-yellow-1"
-                handleClick={() => router.push('/recordings')}
+                handleClick={() => router.push('/upcoming')}
             />
 
             {!callDetail ? (
